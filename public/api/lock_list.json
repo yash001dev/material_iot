@@ -1,0 +1,32 @@
+{
+  "locks": [
+    {
+      "id": 1,
+      "name": "Unit 101 Lock",
+      "capabilities": ["Bluetooth"],
+      "model": "QWERT123",
+      "status": "unavailable"
+    },
+    {
+      "id": 2,
+      "name": "Unit 102 Lock",
+      "capabilities": ["WiFi"],
+      "model": "MNBVC123",
+      "status": "active"
+    },
+    {
+      "id": 3,
+      "name": "Unit 103 Lock",
+      "capabilities": ["Bluetooth"],
+      "model": "QWERT123",
+      "status": "active"
+    },
+    {
+      "id": 4,
+      "name": "Unit 104 Lock",
+      "capabilities": ["WiFi", "pincode"],
+      "model": "MNBVC987",
+      "status": "active"
+    }
+  ]
+}

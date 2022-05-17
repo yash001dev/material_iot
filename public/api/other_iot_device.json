@@ -1,0 +1,52 @@
+{
+  "results": [
+    {
+      "id": 1,
+      "name": "Unit 101 Light",
+      "type": "Light Switch",
+      "state": {
+        "switch_state": "on"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Unit 102 Dimmer",
+      "type": "Dimmer Switch",
+      "state": {
+        "level": 90,
+        "switch_state": "on"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Unit 102 Light",
+      "type": "Light Switch",
+      "state": {
+        "switch_state": "off"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Unit 103 Water Meter",
+      "type": "Water Meter",
+      "state": {}
+    },
+    {
+      "id": 5,
+      "name": "Unit 103 Outlet",
+      "type": "Outlet Switch",
+      "state": {
+        "switch_state": "on"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Unit 104 Dimmer",
+      "type": "Dimmer Switch",
+      "state": {
+        "level": 20,
+        "switch_state": "off"
+      }
+    }
+  ]
+}
