@@ -1,22 +1,20 @@
 import parser from "cron-parser";
-import { DevicesSchema } from "./../utils";
+import { DevicesSchema } from "./schema";
 
-export const isCronSheduled = (cron: string) => {
-  let convertedCron = parser.parseExpression(cron);
-  let scheduledTime = JSON.parse(JSON.stringify(convertedCron.fields));
-  let currentDate = new Date();
-  if (
+export const isCronScheduled = (cron: string) => {
+  const convertedCron = parser.parseExpression(cron);
+  const scheduledTime = JSON.parse(JSON.stringify(convertedCron.fields));
+  const currentDate = new Date();
+  return (
     scheduledTime.month.includes(currentDate.getMonth()) &&
     scheduledTime.dayOfMonth.includes(currentDate.getDate()) &&
     scheduledTime.dayOfWeek.includes(currentDate.getDay())
-  )
-    return true;
-  return false;
+  );
 };
 
 export const ActionDataHandler = (list: DevicesSchema) => {
   let disabled = false;
-  let visiblity = true;
+  let visibility = true;
   let text = "Active";
   let isDimmer = false;
 
@@ -31,15 +29,15 @@ export const ActionDataHandler = (list: DevicesSchema) => {
     if (list.type === "Dimmer Switch") isDimmer = true;
     else if (list.type === "Water Meter") {
       disabled = true;
-      visiblity = false;
+      visibility = false;
     }
   } else if (list?.schedule) {
-    let cronStatus = isCronSheduled(list.schedule);
+    const cronStatus = isCronScheduled(list.schedule);
     if (!cronStatus) disabled = true;
   }
   return {
     disabled,
-    visiblity,
+    visibility,
     text,
     isDimmer,
   };

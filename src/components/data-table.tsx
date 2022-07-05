@@ -1,14 +1,28 @@
+/* eslint-disable prettier/prettier */
 import React, { useState, MouseEvent, ChangeEvent } from "react";
 
-
-import { ActionData, Loader } from "./../components";
-import {  DataTableSchema, DevicesSchema, tableContainer, tableRoot } from "../utils";
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from "@mui/material";
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow,
+  Typography,
+} from "@mui/material";
+import { ActionData } from "./action-data";
+import {
+  DataTableSchema,
+  DevicesSchema,
+  tableContainer,
+  tableRoot,
+} from "../utils";
 import { useGetDeviceListByTypeQuery } from "../service";
-
+import { Loader } from "./loader";
 
 export function DataTable({ type }: DataTableSchema) {
-//   const classes = useStyles();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const { data, isLoading, isError } = useGetDeviceListByTypeQuery(type);
@@ -16,17 +30,15 @@ export function DataTable({ type }: DataTableSchema) {
   const rows =
     results?.length > 0 &&
     results.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
-  const isLockList = type === "lock_list" ? true : false;
+  const isLockList = type === "lock_list";
 
-  
   const handleChangePage = (
     event: MouseEvent<HTMLButtonElement> | null,
-    newPage: number
+    newPage: number,
   ) => {
     setPage(newPage);
   };
 
-  
   const handleChangeRowsPerPage = (
     event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => {
@@ -34,7 +46,7 @@ export function DataTable({ type }: DataTableSchema) {
     setPage(0);
   };
   if (isLoading) return <Loader color="primary" />;
-  if (isError)
+  if (isError) {
     return (
       <Typography
         variant="subtitle1"
@@ -45,8 +57,8 @@ export function DataTable({ type }: DataTableSchema) {
         Sorry for your inconvenience, we are working on it.
       </Typography>
     );
+  }
 
-  
   return (
     <Paper style={tableRoot}>
       <TableContainer style={tableContainer}>
@@ -83,7 +95,7 @@ export function DataTable({ type }: DataTableSchema) {
                   align="center"
                   colSpan={isLockList ? 3 : 2}
                 >
-                  Sorry!, No device list founds or Something went's.
+                  Sorry!, No device list founds or Something went&apos;s.
                 </TableCell>
               </TableRow>
             )}
